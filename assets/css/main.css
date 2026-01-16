@@ -962,7 +962,7 @@ body {
 /* Desktop - 1300px (To make image background parallax) */
 @media only screen and (min-width: 81.25rem) {
     #hero-143 {
-        background: url("https://csimg.nyc3.digitaloceanspaces.com/Hero/kitchen.jpg");
+        background: url("https://images.squarespace-cdn.com/content/v1/68facc45b6b0f865079e4c85/777877bb-c89a-45ca-9cbb-d3b896b409af/thumbnail_IMG_4395.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
