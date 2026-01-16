@@ -22,16 +22,84 @@
 
 <body>
 
-  <header class="site-header">
-  <div class="header-inner">
-    <a class="logo" href="/">Serene Landscaping</a>
-    <nav class="nav">
-      <a href="/edmonton-landscaping/">Edmonton</a>
-      <a href="/commercial/">Commercial</a>
-      <a href="/contact/">Contact</a>
+  <!-- ============================================ -->
+<!--                 Navigation                   -->
+<!-- ============================================ -->
+
+<header id="cs-navigation">
+  <div class="cs-top-bar">
+    <div class="cs-top-container">
+      <div class="cs-top-contact">
+        <a href="tel:+15875669879" class="cs-top-link" aria-label="Call Serene Landscaping at 587 566 9879">
+          <img class="cs-link-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/phone-grey.svg" alt="" width="16" height="16" aria-hidden="true" decoding="async">
+          Call: (587) 566-9879
+        </a>
+
+        <span class="cs-top-link">
+          <img class="cs-link-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/clock-grey.svg" alt="" width="20" height="20" aria-hidden="true" decoding="async">
+          Hours: Mon–Fri 7:00am–8:00pm, Sat–Sun 8:00am–7:00pm
+        </span>
+      </div>
+
+      <div class="cs-top-social">
+        <!-- Replace these with your real profiles -->
+        <a href="#" class="cs-social-link" aria-label="Serene Landscaping on Facebook">
+          <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/face-grey.svg" alt="" width="12" height="12" aria-hidden="true" decoding="async">
+        </a>
+        <a href="#" class="cs-social-link" aria-label="Serene Landscaping on Instagram">
+          <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/insta-grey.svg" alt="" width="12" height="12" aria-hidden="true" decoding="async">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-container">
+    <!--Nav Logo-->
+    <a href="/" class="cs-logo" aria-label="back to home">
+      <!-- Swap this src to your real logo file -->
+      <img src="/assets/img/serene-logo.svg" alt="Serene Landscaping logo" width="197" height="43" decoding="async">
+    </a>
+
+    <!--Navigation List-->
+    <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+      <!--Mobile Nav Toggle-->
+      <button class="cs-toggle" aria-label="mobile menu toggle" aria-controls="cs-expanded" aria-expanded="false">
+        <div class="cs-box" aria-hidden="true">
+          <span class="cs-line cs-line1" aria-hidden="true"></span>
+          <span class="cs-line cs-line2" aria-hidden="true"></span>
+          <span class="cs-line cs-line3" aria-hidden="true"></span>
+        </div>
+      </button>
+
+      <div class="cs-ul-wrapper">
+        <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+          <li class="cs-li"><a href="/" class="cs-li-link cs-active">Home</a></li>
+          <li class="cs-li"><a href="/about/" class="cs-li-link">About</a></li>
+
+          <li class="cs-li cs-dropdown" tabindex="0">
+            <span class="cs-li-link">
+              Services
+              <img class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/chev-down.svg" alt="" width="15" height="15" decoding="async" aria-hidden="true">
+            </span>
+            <ul class="cs-drop-ul">
+              <li class="cs-drop-li"><a href="/services/design-build/" class="cs-li-link cs-drop-link">Design and Build</a></li>
+              <li class="cs-drop-li"><a href="/services/patios-hardscaping/" class="cs-li-link cs-drop-link">Patios and Hardscaping</a></li>
+              <li class="cs-drop-li"><a href="/services/final-grading-sod/" class="cs-li-link cs-drop-link">Final Grading and Sod</a></li>
+              <li class="cs-drop-li"><a href="/services/fences-decks/" class="cs-li-link cs-drop-link">Fences and Decks</a></li>
+              <li class="cs-drop-li"><a href="/services/snow-removal/" class="cs-li-link cs-drop-link">Snow Removal</a></li>
+            </ul>
+          </li>
+
+          <li class="cs-li"><a href="/portfolio/" class="cs-li-link">Portfolio</a></li>
+          <li class="cs-li"><a href="/contact/" class="cs-li-link">Contact</a></li>
+        </ul>
+      </div>
     </nav>
+
+    <a href="/contact/" class="cs-button-solid cs-nav-button">Request a Quote</a>
   </div>
 </header>
+
 
   <!-- ============================================ -->
 <!--                    Hero                      -->
