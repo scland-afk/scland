@@ -1,123 +1,79 @@
+/* =========================================
+   Serene Landscaping - main.css (clean)
+   Includes: base, nav, hero, services, steps, reviews, contact
+   Fixes: Working Hours overflow, duplicate variables, reviews avatar bug
+   ========================================= */
+
+/* ---------- Variables ---------- */
 :root {
   --primary: #16a34a;
-  --secondary: #fbbf24;
+  --primaryLight: rgba(22, 163, 74, 0.18);
+
   --secondary: #fbbf24;
   --secondaryLight: rgba(251, 191, 36, 0.18);
-  --primaryLight: rgba(22, 163, 74, 0.18);
+
   --headerColor: #111827;
   --bodyTextColor: #374151;
   --bodyTextColorWhite: #ffffff;
+
   --sectionPadding: clamp(3.75rem, 6vw, 6.25rem) 1rem;
 }
 
+/* ---------- Global Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-
+html,
 body {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: #111;
   line-height: 1.6;
 }
 
-.hero {
-  background: #0f172a;
-  color: #fff;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.hero-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  font-size: 18px;
-  opacity: 0.95;
-}
-
-.btn-primary {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 24px;
-  background: #16a34a;
-  color: #fff;
+/* Optional global topper consistency */
+.cs-topper {
+  font-size: 0.875rem;
   font-weight: 700;
-  text-decoration: none;
-  border-radius: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.services {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.services h2 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.service-list {
-  list-style: none;
-  padding: 0;
-}
-
-.service-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.trust {
-  background: #f9fafb;
-  padding: 40px 20px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  max-width: 600px;
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 16px;
-  font-family: inherit;
-  
-}
-
-/*-- -------------------------- -->
-<---     Mobile Navigation      -->
-<--- -------------------------- -*/
+/* =========================================
+   Mobile Navigation
+   ========================================= */
 
 /* Mobile - 1023px */
 @media only screen and (max-width: 1023px) {
   body.cs-open {
     overflow: hidden;
   }
+
   body.scroll #cs-navigation {
-    /* 53px, same height as the cs-top-container */
     transform: translateY(-3.3125rem);
   }
+
   #cs-navigation {
     width: 100%;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     position: fixed;
     z-index: 10000;
-    transition: transform .3s;
+    transition: transform 0.3s;
   }
+
   #cs-navigation:before {
-    content: '';
+    content: "";
     width: 100%;
     height: 0vh;
     background: rgba(0, 0, 0, 0.6);
@@ -129,48 +85,49 @@ body {
     right: 0;
     z-index: -1100;
     opacity: 0;
-    transition: height .5s, opacity .5s;
+    transition: height 0.5s, opacity 0.5s;
   }
+
   #cs-navigation.cs-active:before {
     height: 150vh;
     opacity: 1;
   }
+
   #cs-navigation.cs-active .cs-ul-wrapper {
     opacity: 1;
     transform: scaleY(1);
-    transition-delay: .15s;
+    transition-delay: 0.15s;
   }
+
   #cs-navigation.cs-active .cs-li {
     transform: translateY(0);
     opacity: 1;
   }
+
   #cs-navigation .cs-top-bar {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   #cs-navigation .cs-top-container {
     width: 100%;
     padding: 1rem 1.5rem;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     background-color: #f7f7f7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
   }
+
   #cs-navigation .cs-top-contact {
-    width: auto;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 16px - 24px */
     gap: clamp(1rem, 2vw, 1.5rem);
   }
+
   #cs-navigation .cs-top-link {
     font-size: 0.875rem;
     line-height: 1.5em;
@@ -183,14 +140,17 @@ body {
     gap: 0.5rem;
     position: relative;
   }
+
   #cs-navigation .cs-top-link:nth-of-type(2) {
     display: none;
   }
+
   #cs-navigation .cs-link-icon {
     width: 1rem;
     height: auto;
     display: block;
   }
+
   #cs-navigation .cs-top-social {
     visibility: visible;
     opacity: 1;
@@ -198,52 +158,51 @@ body {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    transition: opacity .3s, visibility .3s, height .3s;
+    transition: opacity 0.3s, visibility 0.3s, height 0.3s;
   }
+
   #cs-navigation .cs-social-link {
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
   }
+
   #cs-navigation .cs-social-icon {
     width: 1.25rem;
     height: auto;
     display: block;
   }
+
   #cs-navigation .cs-container {
     width: 100%;
     padding: 1.25rem 1rem;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     position: relative;
   }
+
   #cs-navigation .cs-logo {
-    width: auto;
     height: 2.5rem;
     margin: 0 auto 0 0;
-    padding: 0;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     order: 1;
     z-index: 10;
   }
+
   #cs-navigation .cs-logo img {
     width: auto;
     height: 100%;
-    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
   }
+
   #cs-navigation .cs-nav {
     order: 2;
   }
+
   #cs-navigation .cs-toggle {
     width: 2.875rem;
     height: 2.875rem;
@@ -253,61 +212,62 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform .6s;
+    transition: transform 0.6s;
   }
+
   #cs-navigation .cs-toggle.cs-active {
     transform: rotate(180deg);
   }
+
   #cs-navigation .cs-active .cs-line1 {
     top: 50%;
     transform: translate(-50%, -50%) rotate(225deg);
   }
+
   #cs-navigation .cs-active .cs-line2 {
     top: 50%;
     transform-origin: center;
     transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
   }
+
   #cs-navigation .cs-active .cs-line3 {
     bottom: 100%;
     opacity: 0;
   }
+
   #cs-navigation .cs-box {
-    /* 24px - 28px */
     width: clamp(1.5rem, 2vw, 1.75rem);
     height: 0.75rem;
     position: relative;
   }
+
   #cs-navigation .cs-line {
     width: 100%;
     height: 2px;
     border-radius: 2px;
-    background-color: #FAFBFC;
+    background-color: #fafbfc;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
+
   #cs-navigation .cs-line1 {
     top: 0;
     transform-origin: center;
-    transition: transform .5s, top .3S, left .3S;
-    animation-duration: .7s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    animation-direction: normal;
+    transition: transform 0.5s, top 0.3s, left 0.3s;
   }
+
   #cs-navigation .cs-line2 {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    transition: top .3s, left .3s, transform .5s;
-    animation-duration: .7s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    animation-direction: normal;
+    transition: top 0.3s, left 0.3s, transform 0.5s;
   }
+
   #cs-navigation .cs-line3 {
     bottom: 0;
-    transition: bottom .3s, opacity .3s;
+    transition: bottom 0.3s, opacity 0.3s;
   }
+
   #cs-navigation .cs-ul-wrapper {
     width: 100%;
     height: auto;
@@ -322,72 +282,46 @@ body {
     z-index: -1;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform .4s, opacity .3s;
+    transition: transform 0.4s, opacity 0.3s;
   }
+
   #cs-navigation .cs-ul {
     margin: 0;
     padding: 3rem 0 0 0;
     width: 100%;
-    height: auto;
     max-height: 65vh;
     overflow: scroll;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
   }
+
   #cs-navigation .cs-li {
     width: 100%;
     text-align: center;
     list-style: none;
-    margin-right: 0;
-    /* transition from these values */
+    margin: 0;
     transform: translateY(-4.375rem);
     opacity: 0;
-    transition: transform .6s, opacity .9s;
+    transition: transform 0.6s, opacity 0.9s;
   }
-  #cs-navigation .cs-li:nth-of-type(1) {
-    transition-delay: .05s;
-  }
-  #cs-navigation .cs-li:nth-of-type(2) {
-    transition-delay: .1s;
-  }
-  #cs-navigation .cs-li:nth-of-type(3) {
-    transition-delay: .15s;
-  }
-  #cs-navigation .cs-li:nth-of-type(4) {
-    transition-delay: .2s;
-  }
-  #cs-navigation .cs-li:nth-of-type(5) {
-    transition-delay: .25s;
-  }
-  #cs-navigation .cs-li:nth-of-type(6) {
-    transition-delay: .3s;
-  }
-  #cs-navigation .cs-li:nth-of-type(7) {
-    transition-delay: .35s;
-  }
-  #cs-navigation .cs-li:nth-of-type(8) {
-    transition-delay: .4s;
-  }
-  #cs-navigation .cs-li:nth-of-type(9) {
-    transition-delay: .45s;
-  }
-  #cs-navigation .cs-li:nth-of-type(10) {
-    transition-delay: .5s;
-  }
-  #cs-navigation .cs-li:nth-of-type(11) {
-    transition-delay: .55s;
-  }
-  #cs-navigation .cs-li:nth-of-type(12) {
-    transition-delay: .6s;
-  }
-  #cs-navigation .cs-li:nth-of-type(13) {
-    transition-delay: .65s;
-  }
+
+  #cs-navigation .cs-li:nth-of-type(1) { transition-delay: 0.05s; }
+  #cs-navigation .cs-li:nth-of-type(2) { transition-delay: 0.1s; }
+  #cs-navigation .cs-li:nth-of-type(3) { transition-delay: 0.15s; }
+  #cs-navigation .cs-li:nth-of-type(4) { transition-delay: 0.2s; }
+  #cs-navigation .cs-li:nth-of-type(5) { transition-delay: 0.25s; }
+  #cs-navigation .cs-li:nth-of-type(6) { transition-delay: 0.3s; }
+  #cs-navigation .cs-li:nth-of-type(7) { transition-delay: 0.35s; }
+  #cs-navigation .cs-li:nth-of-type(8) { transition-delay: 0.4s; }
+  #cs-navigation .cs-li:nth-of-type(9) { transition-delay: 0.45s; }
+  #cs-navigation .cs-li:nth-of-type(10) { transition-delay: 0.5s; }
+  #cs-navigation .cs-li:nth-of-type(11) { transition-delay: 0.55s; }
+  #cs-navigation .cs-li:nth-of-type(12) { transition-delay: 0.6s; }
+  #cs-navigation .cs-li:nth-of-type(13) { transition-delay: 0.65s; }
+
   #cs-navigation .cs-li-link {
-    /* 16px - 24px */
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     line-height: 1.2em;
     text-decoration: none;
@@ -396,16 +330,17 @@ body {
     display: inline-block;
     position: relative;
   }
-  #cs-navigation .cs-li-link.cs-active {
-    color: var(--primary);
-  }
+
+  #cs-navigation .cs-li-link.cs-active,
   #cs-navigation .cs-li-link:hover {
     color: var(--primary);
   }
+
   #cs-navigation .cs-button-solid {
     display: none;
   }
 }
+
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
   #cs-navigation .cs-top-link:nth-of-type(2) {
@@ -413,21 +348,20 @@ body {
   }
 }
 
-/*-- -------------------------- -->
-<---     Navigation Dropdown    -->
-<--- -------------------------- -*/
+/* ---------- Navigation Dropdown ---------- */
 
 /* Mobile - 1023px */
 @media only screen and (max-width: 1023px) {
   #cs-navigation .cs-li {
-    text-align: center;
     width: 100%;
     display: block;
   }
+
   #cs-navigation .cs-dropdown {
     position: relative;
     color: var(--bodyTextColorWhite);
   }
+
   #cs-navigation .cs-dropdown.cs-active .cs-drop-ul {
     height: auto;
     opacity: 1;
@@ -435,13 +369,7 @@ body {
     margin: 0.75rem 0 0 0;
     padding: 0.75rem 0;
   }
-  #cs-navigation .cs-dropdown.cs-active .cs-drop-link {
-    opacity: 1;
-  }
-  #cs-navigation .cs-dropdown .cs-li-link {
-    position: relative;
-    transition: opacity .3s;
-  }
+
   #cs-navigation .cs-drop-icon {
     width: 0.9375rem;
     height: auto;
@@ -450,6 +378,7 @@ body {
     right: -1.25rem;
     transform: translateY(-50%);
   }
+
   #cs-navigation .cs-drop-ul {
     width: 100%;
     height: 0;
@@ -460,167 +389,48 @@ body {
     opacity: 0;
     visibility: hidden;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    transition: padding .3s, margin .3s, height .3s, opacity .3s, visibility .3s;
+    transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, visibility 0.3s;
   }
+
   #cs-navigation .cs-drop-li {
     list-style: none;
   }
+
   #cs-navigation .cs-li-link.cs-drop-link {
-    /* 14px - 16px */
     font-size: clamp(0.875rem, 2vw, 1.25rem);
     color: #fff;
   }
 }
+
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-  #cs-navigation .cs-dropdown {
-    position: relative;
-  }
-  #cs-navigation .cs-dropdown:hover {
-    cursor: pointer;
-  }
-  #cs-navigation .cs-dropdown:hover .cs-drop-ul {
-    transform: scaleY(1);
-    opacity: 1;
-    visibility: visible;
-  }
-  #cs-navigation .cs-dropdown:hover .cs-drop-li {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #cs-navigation .cs-drop-icon {
-    width: 0.75rem;
-    height: auto;
-    margin-left: 0.25rem;
-    display: inline-block;
-  }
-  #cs-navigation .cs-drop-ul {
-    min-width: 12.5rem;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
-    border-bottom: 5px solid var(--primary);
-    /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
-    position: absolute;
-    top: 100%;
-    z-index: -100;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform .3s, visibility .3s, opacity .3s;
-  }
-  #cs-navigation .cs-drop-li {
-    list-style: none;
-    font-size: 1rem;
-    text-decoration: none;
-    opacity: 0;
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: translateY(-0.625rem);
-    transition: opacity .6s, transform .6s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(1) {
-    transition-delay: .05s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(2) {
-    transition-delay: .1s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(3) {
-    transition-delay: .15s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(4) {
-    transition-delay: .2s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(5) {
-    transition-delay: .25s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(6) {
-    transition-delay: .3s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(7) {
-    transition-delay: .35s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(8) {
-    transition-delay: .4s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(9) {
-    transition-delay: .45s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(10) {
-    transition-delay: .5s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(11) {
-    transition-delay: .55s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(12) {
-    transition-delay: .6s;
-  }
-  #cs-navigation .cs-drop-li:nth-of-type(13) {
-    transition-delay: .65s;
-  }
-  #cs-navigation .cs-li-link.cs-drop-link {
-    font-size: 1rem;
-    white-space: nowrap;
-    line-height: 1.5em;
-    text-decoration: none;
-    width: 100%;
-    padding: 0.75rem;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
-    color: var(--bodyTextColor);
-    display: block;
-    transition: color 0.3s, background-color 0.3s;
-  }
-  #cs-navigation .cs-li-link.cs-drop-link:hover {
-    color: var(--primary);
-    background-color: #f7f7f7;
-  }
-  #cs-navigation .cs-li-link.cs-drop-link:before {
-    display: none;
-  }
-}
-
-/*-- -------------------------- -->
-<---     Desktop Navigation     -->
-<--- -------------------------- -*/
-
-/* Small Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
   body.scroll #cs-navigation {
-    /* 53px, the ssme height as the cs-top-container */
     transform: translateY(-3.3125rem);
   }
+
   #cs-navigation {
     width: 100%;
-    padding: 0;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     position: fixed;
     z-index: 10000;
-    transition: transform .3s;
+    transition: transform 0.3s;
   }
+
   #cs-navigation .cs-top-bar {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   #cs-navigation .cs-top-container {
     width: 100%;
     max-width: 80rem;
     padding: 1rem;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -628,26 +438,26 @@ body {
     position: relative;
     z-index: 1;
   }
+
   #cs-navigation .cs-top-container:before {
-    /* grey background */
-    content: '';
+    content: "";
     width: 100vw;
     height: 100%;
     background: #f7f7f7;
-    opacity: 1;
     position: absolute;
-    display: block;
     top: 0;
     left: 50%;
     z-index: -1;
     transform: translateX(-50%);
   }
+
   #cs-navigation .cs-top-contact {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
   }
+
   #cs-navigation .cs-top-link {
     font-size: 0.875rem;
     line-height: 1.5em;
@@ -655,73 +465,76 @@ body {
     margin: 0;
     color: var(--bodyTextColor);
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     gap: 0.5rem;
-    position: relative;
   }
+
   #cs-navigation .cs-top-link:hover {
     text-decoration: underline;
   }
+
   #cs-navigation .cs-link-icon {
     width: 1rem;
     height: auto;
     display: block;
   }
+
   #cs-navigation .cs-top-social {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
   }
+
   #cs-navigation .cs-social-link {
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform .3s;
+    transition: transform 0.3s;
   }
+
   #cs-navigation .cs-social-link:hover {
     transform: scale(1.1);
   }
+
   #cs-navigation .cs-social-icon {
     width: 1.25rem;
     height: auto;
     display: block;
   }
+
   #cs-navigation .cs-container {
     width: 100%;
     max-width: 80rem;
     margin: auto;
     padding: 0 1rem;
-    /* prevents padding from affectin gheight */
-    box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 1.5rem;
     position: relative;
   }
+
   #cs-navigation .cs-toggle {
     display: none;
   }
+
   #cs-navigation .cs-logo {
-    /* 40px - 44px */
     height: clamp(2.5rem, 4vw, 2.75rem);
-    /* margin-right auto pushes everything away from it to the right */
     margin: 0 auto 0 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
   }
+
   #cs-navigation .cs-logo img {
     width: auto;
     height: 100%;
-    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
   }
+
   #cs-navigation .cs-ul {
     width: 100%;
     margin: 0;
@@ -731,33 +544,34 @@ body {
     align-items: center;
     gap: 3rem;
   }
+
   #cs-navigation .cs-li {
     list-style: none;
     padding: 1.9375rem 0;
-    /* prevent flexbox from squishing it */
     flex: none;
   }
+
   #cs-navigation .cs-li-link {
-    /* 14px - 16px */
     font-size: clamp(0.875rem, 1.3vw, 1rem);
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
     color: var(--headerColor);
     display: block;
-    position: relative;
-    transition: color .3s;
+    transition: color 0.3s;
   }
+
   #cs-navigation .cs-li-link:hover {
     color: var(--primary);
   }
+
   #cs-navigation .cs-li-link.cs-active {
     font-weight: 700;
     color: var(--headerColor);
   }
+
   #cs-navigation .cs-button-solid {
     font-size: 1rem;
-    /* 46px - 56px */
     line-height: clamp(2.875em, 5.5vw, 3.5em);
     text-decoration: none;
     font-weight: 700;
@@ -770,525 +584,603 @@ body {
     display: inline-block;
     position: relative;
     z-index: 1;
-    /* prevents padding from adding to the width */
-    box-sizing: border-box;
-    transition: color .3s;
+    transition: color 0.3s;
   }
+
   #cs-navigation .cs-button-solid:before {
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 0%;
     background: #1a1a1a;
-    opacity: 1;
     top: 0;
     left: 0;
     z-index: -1;
-    transition: width .3s;
+    transition: width 0.3s;
   }
+
   #cs-navigation .cs-button-solid:hover:before {
     width: 100%;
   }
+
   #cs-navigation .cs-nav-button {
     line-height: 2.875rem;
     margin-left: 1.5rem;
   }
+
+  #cs-navigation .cs-dropdown {
+    position: relative;
+  }
+
+  #cs-navigation .cs-dropdown:hover {
+    cursor: pointer;
+  }
+
+  #cs-navigation .cs-dropdown:hover .cs-drop-ul {
+    transform: scaleY(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #cs-navigation .cs-dropdown:hover .cs-drop-li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #cs-navigation .cs-drop-icon {
+    width: 0.75rem;
+    height: auto;
+    margin-left: 0.25rem;
+    display: inline-block;
+  }
+
+  #cs-navigation .cs-drop-ul {
+    min-width: 12.5rem;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
+    border-bottom: 5px solid var(--primary);
+    position: absolute;
+    top: 100%;
+    z-index: -100;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+  }
+
+  #cs-navigation .cs-drop-li {
+    list-style: none;
+    font-size: 1rem;
+    opacity: 0;
+    width: 100%;
+    display: block;
+    transform: translateY(-0.625rem);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  #cs-navigation .cs-drop-li:nth-of-type(1) { transition-delay: 0.05s; }
+  #cs-navigation .cs-drop-li:nth-of-type(2) { transition-delay: 0.1s; }
+  #cs-navigation .cs-drop-li:nth-of-type(3) { transition-delay: 0.15s; }
+  #cs-navigation .cs-drop-li:nth-of-type(4) { transition-delay: 0.2s; }
+  #cs-navigation .cs-drop-li:nth-of-type(5) { transition-delay: 0.25s; }
+  #cs-navigation .cs-drop-li:nth-of-type(6) { transition-delay: 0.3s; }
+  #cs-navigation .cs-drop-li:nth-of-type(7) { transition-delay: 0.35s; }
+  #cs-navigation .cs-drop-li:nth-of-type(8) { transition-delay: 0.4s; }
+  #cs-navigation .cs-drop-li:nth-of-type(9) { transition-delay: 0.45s; }
+  #cs-navigation .cs-drop-li:nth-of-type(10) { transition-delay: 0.5s; }
+  #cs-navigation .cs-drop-li:nth-of-type(11) { transition-delay: 0.55s; }
+  #cs-navigation .cs-drop-li:nth-of-type(12) { transition-delay: 0.6s; }
+  #cs-navigation .cs-drop-li:nth-of-type(13) { transition-delay: 0.65s; }
+
+  #cs-navigation .cs-li-link.cs-drop-link {
+    font-size: 1rem;
+    white-space: nowrap;
+    line-height: 1.5em;
+    text-decoration: none;
+    width: 100%;
+    padding: 0.75rem;
+    color: var(--bodyTextColor);
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+  }
+
+  #cs-navigation .cs-li-link.cs-drop-link:hover {
+    color: var(--primary);
+    background-color: #f7f7f7;
+  }
 }
-                                
-/*-- -------------------------- -->
-<---           Hero             -->
-<--- -------------------------- -*/
+
+/* =========================================
+   Hero
+   ========================================= */
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #hero-143 {
-        /* Centers button */
-        text-align: center;
-        /* 144px - 300px - leaving extra space for the navigation */
-        padding: clamp(9rem, 25.95vw, 18.75rem) 1rem 0;
-        /* 130px - 450px */
-        padding-bottom: clamp(12.125rem, 30.95vw, 28.125rem);
-        position: relative;
-        z-index: 1;
-        /* Prevents white rectangle pseudos from overlapping the sections below */
-        overflow: hidden;
-    }
-    #hero-143:before {
-        /* Left side of the triangle */
-        content: "";
-        width: 31.25rem;
-        /* make really long so it covers the whole screen all the way to desktop */
-        height: 250rem;
-        background: #fff;
-        opacity: 1;
-        transform: rotate(-67deg);
-        transform-origin: center;
-        position: absolute;
-        display: block;
-        bottom: -139.6875rem;
-        /* this makes the right edge sit at the 50% line at all times */
-        right: 50%;
-        z-index: 0;
-    }
-    #hero-143:after {
-        /* Right side of the triangle */
-        content: "";
-        width: 31.25rem;
-        height: 250rem;
-        background: #fff;
-        opacity: 1;
-        transform: rotate(67deg);
-        transform-origin: center;
-        position: absolute;
-        display: block;
-        bottom: -139.6875rem;
-        /* this makes the left edge sit at the 50% line at all times */
-        left: 50%;
-        z-index: 0;
-    }
-    #hero-143 .cs-background {
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -2;
-    }
-    #hero-143 .cs-background:before {
-        /* Overlay */
-        content: "";
-        width: 100%;
-        height: 100%;
-        background: #000;
-        opacity: 0.7;
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        /* prevents the cursor from interacting with it */
-        pointer-events: none;
-    }
-    #hero-143 .cs-background img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-    #hero-143 .cs-container {
-        width: 100%;
-        max-width: 80rem;
-        margin: auto;
-    }
-    #hero-143 .cs-title {
-        /* 39px - 61px */
-        font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
-        font-weight: 700;
-        line-height: 1.2em;
-        text-align: center;
-        max-width: 51.8125rem;
-        /* 16px - 24px */
-        margin: 0 auto clamp(1rem, 4vw, 1.5rem);
-        color: #fff;
-        position: relative;
-    }
-    #hero-143 .cs-title:after {
-        /* Divider Line */
-        content: "";
-        /* 60px - 100px */
-        width: clamp(3.75rem, 9.5vw, 6.25rem);
-        /* 4px - 8px */
-        height: clamp(0.25rem, 0.8vw, 0.5rem);
-        /* 16px - 24px */
-        margin: clamp(1rem, 4vw, 1.5rem) auto clamp(1rem, 4vw, 1.5rem);
-        background: var(--primary);
-        opacity: 1;
-        position: relative;
-        display: block;
-    }
-    #hero-143 .cs-text {
-        /* 16px - 25px */
-        font-size: clamp(1rem, 1.95vw, 1.5625rem);
-        line-height: 1.5em;
-        text-align: center;
-        width: 100%;
-        /* 464px - 800px */
-        max-width: clamp(29rem, 60vw, 50rem);
-        margin: 0 auto;
-        /* 40px - 48px */
-        margin-bottom: clamp(2.5rem, 4vw, 3rem);
-        color: #fff;
-    }
-    #hero-143 .cs-button-solid {
-        font-size: 1rem;
-        /* 46px - 56px */
-        line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-        text-decoration: none;
-        font-weight: 700;
-        margin: auto;
-        color: #1a1a1a;
-        min-width: 9.375rem;
-        padding: 0 1.5rem;
-        background-color: var(--primary);
-        border-radius: 0.25rem;
-        display: inline-block;
-        position: relative;
-        z-index: 1;
-        transition: color 0.3s;
-    }
-    #hero-143 .cs-button-solid:before {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 0%;
-        background: #000;
-        opacity: 1;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        border-radius: 0.25rem;
-        transition: width 0.3s;
-    }
-    #hero-143 .cs-button-solid:hover {
-        color: #fff;
-    }
-    #hero-143 .cs-button-solid:hover:before {
-        width: 100%;
-    }
+  #hero-143 {
+    text-align: center;
+    padding: clamp(9rem, 25.95vw, 18.75rem) 1rem 0;
+    padding-bottom: clamp(12.125rem, 30.95vw, 28.125rem);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  #hero-143:before {
+    content: "";
+    width: 31.25rem;
+    height: 250rem;
+    background: #fff;
+    transform: rotate(-67deg);
+    position: absolute;
+    bottom: -139.6875rem;
+    right: 50%;
+    z-index: 0;
+  }
+
+  #hero-143:after {
+    content: "";
+    width: 31.25rem;
+    height: 250rem;
+    background: #fff;
+    transform: rotate(67deg);
+    position: absolute;
+    bottom: -139.6875rem;
+    left: 50%;
+    z-index: 0;
+  }
+
+  #hero-143 .cs-background {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+  }
+
+  #hero-143 .cs-background:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #hero-143 .cs-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #hero-143 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+  }
+
+  #hero-143 .cs-title {
+    font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+    font-weight: 700;
+    line-height: 1.2em;
+    max-width: 51.8125rem;
+    margin: 0 auto clamp(1rem, 4vw, 1.5rem);
+    color: #fff;
+    position: relative;
+  }
+
+  #hero-143 .cs-title:after {
+    content: "";
+    width: clamp(3.75rem, 9.5vw, 6.25rem);
+    height: clamp(0.25rem, 0.8vw, 0.5rem);
+    margin: clamp(1rem, 4vw, 1.5rem) auto clamp(1rem, 4vw, 1.5rem);
+    background: var(--primary);
+    display: block;
+  }
+
+  #hero-143 .cs-text {
+    font-size: clamp(1rem, 1.95vw, 1.5625rem);
+    line-height: 1.5em;
+    width: 100%;
+    max-width: clamp(29rem, 60vw, 50rem);
+    margin: 0 auto;
+    margin-bottom: clamp(2.5rem, 4vw, 3rem);
+    color: #fff;
+  }
+
+  #hero-143 .cs-button-solid {
+    font-size: 1rem;
+    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    text-decoration: none;
+    font-weight: 700;
+    margin: auto;
+    color: #1a1a1a;
+    min-width: 9.375rem;
+    padding: 0 1.5rem;
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+
+  #hero-143 .cs-button-solid:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #000;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 0.25rem;
+    transition: width 0.3s;
+  }
+
+  #hero-143 .cs-button-solid:hover {
+    color: #fff;
+  }
+
+  #hero-143 .cs-button-solid:hover:before {
+    width: 100%;
+  }
 }
-/* Desktop - 1300px (To make image background parallax) */
+
+/* Desktop - 1300px parallax */
 @media only screen and (min-width: 81.25rem) {
-    #hero-143 {
-        background: url("https://images.squarespace-cdn.com/content/v1/68facc45b6b0f865079e4c85/777877bb-c89a-45ca-9cbb-d3b896b409af/thumbnail_IMG_4395.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        /* makes the parallax effect */
-        background-attachment: fixed;
-    }
-    #hero-143 .cs-background img {
-        display: none;
-    }
+  #hero-143 {
+    background: url("https://images.squarespace-cdn.com/content/v1/68facc45b6b0f865079e4c85/777877bb-c89a-45ca-9cbb-d3b896b409af/thumbnail_IMG_4395.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  #hero-143 .cs-background img {
+    display: none;
+  }
 }
 
-/*-- -------------------------- -->
-<---         Services           -->
-<--- -------------------------- -*/
+/* =========================================
+   Services
+   ========================================= */
 
-/* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #services-342 {
-        padding: var(--sectionPadding);
-    }
-    #services-342 .cs-container {
-        width: 100%;
-        max-width: 80rem;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* 48px - 64px */
-        gap: clamp(3rem, 6vw, 4rem);
-    }
-    #services-342 .cs-content {
-        /* set text align to left if content needs to be left aligned */
-        text-align: center;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        /* centers content horizontally, set to flex-start to left align */
-        align-items: center;
-    }
+  #services-342 {
+    padding: var(--sectionPadding);
+  }
 
-    #services-342 .cs-card-group {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        /* 16px - 20px */
-        gap: clamp(1rem, 1.6vw, 1.25rem);
-    }
-    #services-342 .cs-item {
-        list-style: none;
-        width: 100%;
-        max-width: 31.25rem;
-        border-radius: 0.5rem;
-        position: relative;
-        z-index: 1;
-        transition:
-            box-shadow 0.3s,
-            transform 0.3s;
-    }
-    #services-342 .cs-item:hover {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        transform: translateY(-0.4375rem);
-    }
-    #services-342 .cs-item:hover .cs-picture img {
-        opacity: 0.3;
-        transform: scale(1.1);
-    }
-    #services-342 .cs-item:hover .cs-h3 {
-        color: var(--primaryLight);
-    }
-    #services-342 .cs-item:before {
-        /* border, done in pseudo so it can sit under the picture */
-        content: "";
-        width: 100%;
-        height: 100%;
-        border-radius: 0.5rem;
-        border: 1px solid #e8e8e8;
-        /* prevents border from affecting height and width */
-        box-sizing: border-box;
-        background: transparent;
-        opacity: 1;
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-    #services-342 .cs-link {
-        text-decoration: none;
-        /* 16px - 24px */
-        padding-bottom: clamp(1rem, 2.2vw, 1.5rem);
-        display: block;
-    }
-    #services-342 .cs-picture {
-        width: 100%;
-        height: 15rem;
-        /* 16px - 24px */
-        margin-bottom: clamp(1rem, 2.2vw, 1.5rem);
-        border-radius: 0.5rem 0.5rem 0 0;
-        background-color: var(--primaryLight);
-        /* clips the img tag corners */
-        overflow: hidden;
-        display: block;
-        position: relative;
-        z-index: 10;
-    }
-    #services-342 .cs-picture img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transition:
-            transform 0.6s,
-            opacity 0.3s;
-    }
-    #services-342 .cs-h3 {
-        /* 20px - 25px */
-        font-size: clamp(1.25rem, 3vw, 1.5625rem);
-        line-height: 1.2em;
-        font-weight: 700;
-        color: var(--headerColor);
-        margin: 0 0 0.75rem 0;
-        /* 16px - 24px */
-        padding: 0 clamp(1rem, 2vw, 1.5rem);
-        transition: color 0.3s;
-    }
-    #services-342 .cs-item-text {
-        /* 14px - 16px  */
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        line-height: 1.5em;
-        color: var(--bodyTextColor);
-        margin: 0;
-        /* 16px - 24px */
-        padding: 0 clamp(1rem, 2.2vw, 1.5rem);
-    }
+  #services-342 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+
+  #services-342 .cs-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #services-342 .cs-card-group {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 1.6vw, 1.25rem);
+  }
+
+  #services-342 .cs-item {
+    list-style: none;
+    width: 100%;
+    max-width: 31.25rem;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  #services-342 .cs-item:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transform: translateY(-0.4375rem);
+  }
+
+  #services-342 .cs-item:hover .cs-picture img {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+
+  #services-342 .cs-item:hover .cs-h3 {
+    color: var(--primaryLight);
+  }
+
+  #services-342 .cs-item:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid #e8e8e8;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  #services-342 .cs-link {
+    text-decoration: none;
+    padding-bottom: clamp(1rem, 2.2vw, 1.5rem);
+    display: block;
+  }
+
+  #services-342 .cs-picture {
+    width: 100%;
+    height: 15rem;
+    margin-bottom: clamp(1rem, 2.2vw, 1.5rem);
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: var(--primaryLight);
+    overflow: hidden;
+    display: block;
+    position: relative;
+    z-index: 10;
+  }
+
+  #services-342 .cs-picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s, opacity 0.3s;
+  }
+
+  #services-342 .cs-h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5625rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    color: var(--headerColor);
+    margin: 0 0 0.75rem 0;
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
+    transition: color 0.3s;
+  }
+
+  #services-342 .cs-item-text {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.5em;
+    color: var(--bodyTextColor);
+    margin: 0;
+    padding: 0 clamp(1rem, 2.2vw, 1.5rem);
+  }
 }
-/* Tablet - 768px */
+
 @media only screen and (min-width: 48rem) {
-    #services-342 .cs-card-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    #services-342 .cs-item {
-        /* we do this so it's stackable. You can add any number of reviews you want and they will stack and center in the middle. We don't use grid because if you have an odd number of cards, they don't stay centered, they align with their grid lines. This way its more FLEX-ible*/
-        width: clamp(31.85%, 30.5vw, 32.28%);
-    }
+  #services-342 .cs-card-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #services-342 .cs-item {
+    width: clamp(31.85%, 30.5vw, 32.28%);
+  }
 }
 
-/*-- -------------------------- -->
-<---           Steps            -->
-<--- -------------------------- -*/
+/* =========================================
+   Trust (simple)
+   ========================================= */
 
-/* Mobile - 360px */
+.trust {
+  background: #f9fafb;
+  padding: 40px 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* =========================================
+   Steps
+   ========================================= */
+
 @media only screen and (min-width: 0rem) {
-    #steps-1171 {
-        padding: var(--sectionPadding);
-        background-color: #1a1a1a;
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
-    }
-    #steps-1171 .cs-container {
-        width: 100%;
-        /* changes to 1280px at desktop */
-        max-width: 44rem;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* 48px - 64px */
-        gap: clamp(3rem, 6vw, 4rem);
-    }
-    #steps-1171 .cs-content {
-        /* set text align to left if content needs to be left aligned */
-        text-align: center;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        /* centers content horizontally, set to flex-start to left align */
-        align-items: center;
-    }
+  #steps-1171 {
+    padding: var(--sectionPadding);
+    background-color: #1a1a1a;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
 
-    #steps-1171 .cs-topper {
-        color: var(--secondary);
-    }
-    #steps-1171 .cs-title,
-    #steps-1171 .cs-text {
-        color: var(--bodyTextColorWhite);
-    }
-    #steps-1171 .cs-text {
-        opacity: 0.8;
-    }
-    #steps-1171 .cs-card-group {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 1.25rem;
-    }
-    #steps-1171 .cs-item {
-        text-align: center;
-        list-style: none;
-        display: flex;
-        grid-column: span 12;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-    }
-    #steps-1171 .cs-item:last-of-type:after {
-        display: none;
-    }
-    #steps-1171 .cs-item:nth-of-type(even):after {
-        /* scaleX -1 flips it horizontally */
-        transform: rotate(-135deg) scaleX(-1);
-    }
-    #steps-1171 .cs-item:after {
-        content: "";
-        position: relative;
-        display: block;
-        /* 54px - 84px */
-        width: clamp(3.375rem, 6vw, 5.25rem);
-        height: clamp(3.375rem, 6vw, 5.25rem);
-        margin-top: 1.25rem;
-        background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/curved-arrow.svg");
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 1;
-        transform: rotate(135deg);
-    }
-    #steps-1171 .cs-picture {
-        margin-bottom: 1.5rem;
-        width: 5.5rem;
-        height: 5.5rem;
-        border: 1px solid rgba(255, 252, 243, 0.5);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #steps-1171 .cs-icon {
-        width: 2.5rem;
-        height: auto;
-        display: block;
-    }
-    #steps-1171 .cs-h3 {
-        font-size: 1.25rem;
-        line-height: 1.2em;
-        text-align: inherit;
-        margin: 0 0 0.75rem 0;
-        color: var(--bodyTextColorWhite);
-    }
-    #steps-1171 .cs-item-p {
-        font-size: 1rem;
-        line-height: 1.5em;
-        text-align: inherit;
-        max-width: 21.375rem;
-        margin: 0;
-        color: var(--bodyTextColorWhite);
-        opacity: 0.8;
-    }
-    #steps-1171 .cs-graphic {
-        width: 52.5rem;
-        height: auto;
-        opacity: 0.05;
-        position: absolute;
-        top: -5rem;
-        left: -5rem;
-        transform: rotate(-10deg);
-    }
+  #steps-1171 .cs-container {
+    width: 100%;
+    max-width: 44rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+
+  #steps-1171 .cs-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #steps-1171 .cs-topper {
+    color: var(--secondary);
+  }
+
+  #steps-1171 .cs-title,
+  #steps-1171 .cs-text {
+    color: var(--bodyTextColorWhite);
+  }
+
+  #steps-1171 .cs-text {
+    opacity: 0.8;
+  }
+
+  #steps-1171 .cs-card-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+
+  #steps-1171 .cs-item {
+    text-align: center;
+    list-style: none;
+    display: flex;
+    grid-column: span 12;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  #steps-1171 .cs-item:last-of-type:after {
+    display: none;
+  }
+
+  #steps-1171 .cs-item:nth-of-type(even):after {
+    transform: rotate(-135deg) scaleX(-1);
+  }
+
+  #steps-1171 .cs-item:after {
+    content: "";
+    position: relative;
+    display: block;
+    width: clamp(3.375rem, 6vw, 5.25rem);
+    height: clamp(3.375rem, 6vw, 5.25rem);
+    margin-top: 1.25rem;
+    background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/curved-arrow.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(135deg);
+  }
+
+  #steps-1171 .cs-picture {
+    margin-bottom: 1.5rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 1px solid rgba(255, 252, 243, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #steps-1171 .cs-icon {
+    width: 2.5rem;
+    height: auto;
+    display: block;
+  }
+
+  #steps-1171 .cs-h3 {
+    font-size: 1.25rem;
+    line-height: 1.2em;
+    margin: 0 0 0.75rem 0;
+    color: var(--bodyTextColorWhite);
+  }
+
+  #steps-1171 .cs-item-p {
+    font-size: 1rem;
+    line-height: 1.5em;
+    max-width: 21.375rem;
+    margin: 0;
+    color: var(--bodyTextColorWhite);
+    opacity: 0.8;
+  }
+
+  #steps-1171 .cs-graphic {
+    width: 52.5rem;
+    height: auto;
+    opacity: 0.05;
+    position: absolute;
+    top: -5rem;
+    left: -5rem;
+    transform: rotate(-10deg);
+  }
 }
-/* Tablet - 768px */
+
 @media only screen and (min-width: 48rem) {
-    #steps-1171 .cs-item {
-        grid-column: span 6;
-    }
-    #steps-1171 .cs-item:nth-of-type(2):after {
-        display: none;
-    }
-    #steps-1171 .cs-item:nth-of-type(1):after {
-        transform: rotate(135deg) scaleX(-1);
-    }
-    #steps-1171 .cs-item:after {
-        margin: 0;
-        position: absolute;
-        right: -2.5rem;
-        top: 0;
-        transform: rotate(45deg);
-    }
+  #steps-1171 .cs-item {
+    grid-column: span 6;
+  }
+
+  #steps-1171 .cs-item:nth-of-type(2):after {
+    display: none;
+  }
+
+  #steps-1171 .cs-item:nth-of-type(1):after {
+    transform: rotate(135deg) scaleX(-1);
+  }
+
+  #steps-1171 .cs-item:after {
+    margin: 0;
+    position: absolute;
+    right: -2.5rem;
+    top: 0;
+    transform: rotate(45deg);
+  }
 }
-/* Desktop - 1024px */
+
 @media only screen and (min-width: 64rem) {
-    #steps-1171 .cs-container {
-        max-width: 80rem;
-    }
-    #steps-1171 .cs-item {
-        grid-column: span 3;
-    }
-    #steps-1171 .cs-item:nth-of-type(2):after {
-        display: block;
-        transform: rotate(45deg);
-    }
-    #steps-1171 .cs-item:nth-of-type(3):after {
-        display: block;
-        transform: rotate(135deg) scaleX(-1);
-    }
-    #steps-1171 .cs-item:after {
-        right: -3rem;
-    }
-}
-                                
-/*-- -------------------------- -->
-<---          Reviews           -->
-<--- -------------------------- -*/
+  #steps-1171 .cs-container {
+    max-width: 80rem;
+  }
 
-/* Mobile - 360px */
+  #steps-1171 .cs-item {
+    grid-column: span 3;
+  }
+
+  #steps-1171 .cs-item:nth-of-type(2):after {
+    display: block;
+    transform: rotate(45deg);
+  }
+
+  #steps-1171 .cs-item:nth-of-type(3):after {
+    display: block;
+    transform: rotate(135deg) scaleX(-1);
+  }
+
+  #steps-1171 .cs-item:after {
+    right: -3rem;
+  }
+}
+
+/* =========================================
+   Reviews (fix avatar overflow bug)
+   ========================================= */
+
 @media only screen and (min-width: 0rem) {
   #reviews-1672 {
     padding: var(--sectionPadding);
   }
+
   #reviews-1672 .cs-container {
     width: 100%;
     max-width: 80rem;
@@ -1296,9 +1188,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 40px - 64px */
     gap: clamp(2.5rem, 4.5vw, 4rem);
   }
+
   #reviews-1672 .cs-content {
     text-align: left;
     width: 100%;
@@ -1306,72 +1198,58 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
+
   #reviews-1672 .cs-title {
-    margin: 0rem;
+    margin: 0;
   }
+
   #reviews-1672 .cs-card-group {
     width: 100%;
     padding: 0;
     margin: 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    /* 16px - 20px */
     gap: clamp(1rem, 2.5vw, 1.25rem);
   }
+
   #reviews-1672 .cs-item {
     list-style: none;
     width: 100%;
-    /* 20px - 40px top & bottom */
-    /* 20px - 40px left & right */
-    padding: clamp(1.25rem, 3.15vw, 2.5rem) clamp(1.25rem, 3.15vw, 2.5rem);
+    padding: clamp(1.25rem, 3.15vw, 2.5rem);
     background-color: #f7f7f7;
-    /* prevents padding from adding to height and width */
-    box-sizing: border-box;
     display: flex;
     grid-column: span 12;
-    justify-content: center;
-    align-items: flex-start;
     flex-direction: column;
     position: relative;
-    /* 24px - 48px */
     gap: clamp(1.5rem, 4vw, 3rem);
   }
+
   #reviews-1672 .cs-flex-group {
-    /* this margin top auto will push everything up and force the cs-flex-group to the bottom of the container. This is to account for review cards with different heights because of more or less text and makes the cards more responsive to changing text */
     margin-top: auto;
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
   }
+
+  /* FIX: cs-profile is already the img */
   #reviews-1672 .cs-profile {
     width: 3.25rem;
-    height: auto;
+    height: 3.25rem;
     border-radius: 50%;
-    position: relative;
     display: block;
-  }
-  #reviews-1672 .cs-profile img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    /* makes the image behave like a background image */
     object-fit: cover;
   }
+
   #reviews-1672 .cs-name {
-    /* 20px - 25px */
     font-size: 1.25rem;
     line-height: 1.2em;
     font-weight: 700;
     margin: 0;
-    /* in case one card has more text than the other, this pushes up against the review text so the name and title are always at the bottom. Only works if parent is a flexbox */
-    margin-top: auto;
     color: var(--headerColor);
     display: block;
   }
+
   #reviews-1672 .cs-job {
-    /* 14px - 16px */
     font-size: 1rem;
     line-height: 1.5em;
     font-weight: 400;
@@ -1379,23 +1257,26 @@ body {
     color: var(--bodyTextColor);
     display: block;
   }
+
   #reviews-1672 .wrapper {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
+
   #reviews-1672 .cs-item-stars {
     width: 6.75rem;
     height: auto;
   }
+
   #reviews-1672 .cs-review {
-    /* 14px - 16px */
     font-size: clamp(0.875rem, 1.6vw, 1.25rem);
     line-height: 1.5em;
     margin: 0;
     color: var(--bodyTextColor);
     z-index: 1;
   }
+
   #reviews-1672 .cs-quote {
     width: 5.375rem;
     height: auto;
@@ -1405,58 +1286,60 @@ body {
     z-index: 0;
   }
 }
-/* Tablet - 768px */
+
 @media only screen and (min-width: 48rem) {
   #reviews-1672 .cs-item {
     grid-column: span 4;
   }
 }
-                                
-/*-- -------------------------- -->
-<---          Contact           -->
-<--- -------------------------- -*/
 
-/* Mobile - 360px */
+/* =========================================
+   Contact (fix Working Hours overflow)
+   ========================================= */
+
 @media only screen and (min-width: 0rem) {
   #contact-2320 {
     padding: var(--sectionPadding);
     display: flex;
     flex-direction: column;
-    /* 48px - 64px */
     gap: clamp(3rem, 6vw, 4rem);
     position: relative;
     z-index: 1;
   }
+
   #contact-2320 .cs-container {
     width: 100%;
-    /* changes to 1280px at desktop */
     max-width: 36.25rem;
     margin: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    /* 48px - 64px */
+    align-items: center;
     gap: clamp(3rem, 6vw, 4rem);
   }
+
+  /* FIX: reduce side padding on small screens */
   #contact-2320 .cs-container2 {
     width: 100%;
-    /* changes to 1280px at desktop */
     max-width: 36.25rem;
-    padding: 5rem 3rem;
+    padding: clamp(2.5rem, 6vw, 5rem) 1.25rem;
     margin: auto;
     position: relative;
     z-index: 1;
+    overflow: hidden;
   }
+
   #contact-2320 .cs-container2 .cs-topper {
     color: #fff;
   }
+
   #contact-2320 .cs-content {
     text-align: left;
   }
+
   #contact-2320 .cs-title {
     margin-bottom: 2rem;
   }
+
   #contact-2320 .cs-form {
     border-radius: 1rem;
     display: flex;
@@ -1465,44 +1348,42 @@ body {
     align-items: center;
     gap: 0.75rem;
   }
+
   #contact-2320 .cs-label {
-    /* 14px - 16px */
     font-size: clamp(0.875rem, 1.5vw, 1rem);
     width: 100%;
     color: var(--headerColor);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: 0.25rem;
   }
+
   #contact-2320 .cs-input {
     font-size: 1rem;
     width: 100%;
     height: 3.5rem;
-    padding: 0;
     padding-left: 1.5rem;
     color: var(--headerColor);
     background-color: #f7f7f7;
     border: none;
-    /* prevents padding from adding to height and width */
-    box-sizing: border-box;
   }
+
   #contact-2320 .cs-input::placeholder {
     color: #7d799c;
     opacity: 0.6;
   }
+
   #contact-2320 .cs-textarea {
     min-height: 7.5rem;
     padding-top: 1.5rem;
     margin-bottom: 0.75rem;
     font-family: inherit;
   }
+
   #contact-2320 .cs-button-solid {
     font-size: 1rem;
-    /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-    text-decoration: none;
     font-weight: 700;
     text-align: center;
     margin: 0;
@@ -1512,25 +1393,25 @@ body {
     display: inline-block;
     position: relative;
     z-index: 1;
-    /* prevents padding from adding to the width */
-    box-sizing: border-box;
   }
+
   #contact-2320 .cs-button-solid:before {
     content: "";
     position: absolute;
     height: 100%;
     width: 0%;
     background: #000;
-    opacity: 1;
     top: 0;
     left: 0;
     z-index: -1;
     border-radius: 0.25rem;
     transition: width 0.3s;
   }
+
   #contact-2320 .cs-button-solid:hover:before {
     width: 100%;
   }
+
   #contact-2320 .cs-submit {
     text-transform: uppercase;
     background-color: var(--secondaryLight);
@@ -1538,10 +1419,12 @@ body {
     border: none;
     transition: color 0.3s;
   }
+
   #contact-2320 .cs-submit:hover {
     cursor: pointer;
     color: #fff;
   }
+
   #contact-2320 .cs-map {
     width: 100%;
     max-width: 39.375rem;
@@ -1550,14 +1433,15 @@ body {
     z-index: 1;
     display: block;
   }
+
   #contact-2320 .cs-iframe-wrapper {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    /* 40px - 56px */
     bottom: clamp(2.5rem, 5vw, 3.5rem);
   }
+
   #contact-2320 .cs-iframe-wrapper iframe {
     position: absolute;
     top: 0;
@@ -1566,11 +1450,10 @@ body {
     width: 100%;
     object-fit: cover;
   }
+
   #contact-2320 .cs-box {
     width: 90%;
     max-width: 28.125rem;
-    /* 16px - 32px top & bottom */
-    /* 16px left & right */
     padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 2.4vw, 1rem);
     background-color: #fff;
     display: flex;
@@ -1582,28 +1465,31 @@ body {
     transform: translateX(-50%);
     z-index: 100;
   }
+
   #contact-2320 .cs-box:before {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     background: var(--primary);
     pointer-events: none;
     opacity: 0.1;
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
   }
+
   #contact-2320 .cs-icon {
     width: 2rem;
     height: auto;
     display: block;
   }
+
   #contact-2320 .cs-flex {
     display: flex;
     flex-direction: column;
   }
+
   #contact-2320 .cs-header {
     font-size: 1.25rem;
     font-weight: 700;
@@ -1611,28 +1497,32 @@ body {
     margin: 0 0 0.5rem;
     color: var(--headerColor);
   }
+
   #contact-2320 .cs-address {
     font-size: clamp(0.75rem, 2.8vw, 1rem);
     line-height: 1.5em;
     margin: 0;
     color: var(--bodyTextColor);
   }
+
   #contact-2320 .cs-hours {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  /* FIX: avoid forced width that can overflow */
   #contact-2320 .cs-hours-info {
-    /* 20px - 25px */
     font-size: clamp(1.25rem, 3vw, 1.5625rem);
     line-height: 1.2em;
     font-weight: 700;
-    width: 60%;
-    max-width: 28ch;
+    width: 100%;
+    max-width: 32ch;
     margin: 0;
     color: var(--bodyTextColorWhite);
   }
+
   #contact-2320 .cs-background {
     width: 100%;
     height: 100%;
@@ -1642,11 +1532,10 @@ body {
     left: 0;
     z-index: -1;
   }
+
   #contact-2320 .cs-background:before {
-    /* background color overlay */
-    content: '';
+    content: "";
     position: absolute;
-    display: block;
     height: 100%;
     width: 100%;
     background: #000;
@@ -1655,17 +1544,18 @@ body {
     left: 0;
     z-index: 1;
   }
+
   #contact-2320 .cs-background img {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    /* Makes img tag act as a background image */
     object-fit: cover;
   }
 }
-/* Small Desktop - 1024px */
+
+/* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #contact-2320 .cs-container {
     max-width: 80rem;
@@ -1674,34 +1564,39 @@ body {
     align-items: stretch;
     gap: 3.25rem;
   }
+
   #contact-2320 .cs-container2 {
     max-width: 80rem;
   }
+
   #contact-2320 .cs-content {
     max-width: 32.625rem;
-    /* 24px - 80px */
     padding: clamp(2rem, 5vw, 5rem) 0;
   }
+
   #contact-2320 .cs-title,
   #contact-2320 .cs-topper,
   #contact-2320 .cs-text {
     text-align: left;
     margin-left: 0;
   }
+
   #contact-2320 .cs-title {
     max-width: 32.625rem;
   }
+
   #contact-2320 .cs-services,
   #contact-2320 .cs-phone {
     width: 47%;
   }
+
   #contact-2320 .cs-button-solid {
     margin-left: 0;
   }
+
   #contact-2320 .cs-map {
     max-width: 39.375rem;
     height: auto;
     order: -1;
   }
 }
-                                
