@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scland.pages.dev/sitemap.xml
