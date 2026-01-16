@@ -78,3 +78,31 @@ body {
   font-family: inherit;
 }
 
+.site-header {
+  background: #0b1220;
+  padding: 14px 20px;
+}
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+}
+.nav a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  margin-left: 14px;
+  font-weight: 600;
+}
+.nav a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .nav { display: none; }
+}
