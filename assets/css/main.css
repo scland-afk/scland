@@ -290,3 +290,154 @@ body {
         display: none;
     }
 }
+
+/* =========================
+   Landing Page Sections
+   ========================= */
+
+.lp-container{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.lp-h2{
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 10px 0;
+  color: #111827;
+}
+
+.lp-sub{
+  margin: 0 0 22px 0;
+  color: #374151;
+  max-width: 70ch;
+}
+
+/* Trust bar */
+.lp-trust{
+  padding: 22px 0;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.lp-trust-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.lp-trust-item{
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.lp-trust-item strong{
+  display: block;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.lp-trust-item span{
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* Service cards */
+.lp-services{
+  padding: 60px 0;
+}
+
+.lp-cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.lp-card{
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+.lp-card h3{
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.lp-card p{
+  margin: 0;
+  color: #374151;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.lp-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(22,163,74,.55);
+}
+
+/* Process */
+.lp-process{
+  padding: 10px 0 70px;
+}
+
+.lp-steps{
+  margin: 0;
+  padding-left: 18px;
+  color: #374151;
+}
+
+.lp-steps li{
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* CTA box */
+.lp-cta{
+  margin-top: 26px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 22px;
+  background: #0b1220;
+  color: #fff;
+}
+
+.lp-cta h3{
+  margin: 0 0 6px 0;
+  font-size: 20px;
+}
+
+.lp-cta p{
+  margin: 0 0 14px 0;
+  opacity: .95;
+}
+
+.lp-btn{
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: #111;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .lp-cards{ grid-template-columns: repeat(2, 1fr); }
+  .lp-trust-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px){
+  .lp-cards{ grid-template-columns: 1fr; }
+  .lp-h2{ font-size: 24px; }
+}
