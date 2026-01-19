@@ -447,7 +447,7 @@ html {
     #cs-navigation .cs-container {
         width: 100%;
         /* same height as the cs-ul-wrapper */
-        height: 5.8125rem;
+        height: 5rem;
         max-width: 80rem;
         margin: auto;
         display: flex;
@@ -461,8 +461,8 @@ html {
     }
     #cs-navigation .cs-logo {
         width: 18.4%;
-        max-width: 25rem;
-        height: 7.5rem;
+        max-width: 18rem;
+        height: 4rem;
         /* margin-right auto pushes everything away from it to the right */
         margin: 0 auto 0 0;
         padding: 0;
