@@ -209,6 +209,10 @@ body {
   #cs-navigation .cs-button-solid {
     display: none;
   }
+  
+  #cs-navigation .cs-button-outline {
+    display: none;
+  }
 }
 
 /* Mobile dropdown */
@@ -388,6 +392,30 @@ body {
 
   #cs-navigation .cs-button-solid:hover:before {
     width: 100%;
+  }
+  
+  #cs-navigation .cs-button-outline {
+    font-size: 1rem;
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+    min-width: 9.375rem;
+    padding: 0 2rem;
+    border: 2px solid #fff;
+    background-color: transparent;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    transition: color 0.3s, background-color 0.3s;
+  }
+
+  #cs-navigation .cs-button-outline:hover {
+    color: #1a1a1a;
+    background-color: #fff;
   }
 
   /* Desktop dropdown */
