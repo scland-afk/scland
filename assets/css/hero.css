@@ -7,9 +7,9 @@
     #hero-668 {
         /* centers button */
         text-align: center;
-        /* 120px - 300px top */
+        /* 200px - 300px top - increased to account for larger nav */
         /* 60px - 150px  bottom */
-        padding: clamp(7.5rem, 23.82vw, 18.75rem) 1rem
+        padding: clamp(12.5rem, 30vw, 18.75rem) 1rem
             clamp(3.75rem, 14.82vw, 9.375rem);
         position: relative;
         z-index: 1;
