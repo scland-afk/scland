@@ -1,0 +1,48 @@
+/*-- -------------------------- -->
+<---          Stats             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+#stats-833 {
+    width: 100%;
+    max-width: 25rem;
+    padding: 0;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+#stats-833 .cs-item {
+    list-style: none;
+    width: 32%;
+    max-width: 9.375rem;
+    /* making flex so we can align a heading with 1 line to the bottom */
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    align-content: space-between;
+}
+
+#stats-833 .cs-number {
+    /* 39px - 49px */
+    font-size: clamp(2.4375rem, 5vw, 3.0625rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    text-align: left;
+    color: var(--primary);
+    display: block;
+    /* 8px - 16px */
+    margin: 0 0 clamp(0.25rem, 0.5vw, 1rem);
+}
+
+#stats-833 .cs-h3 {
+    /* 16px - 20px */
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.2em;
+    text-align: left;
+    /* auto margin top will push text to bottom if there's only one line */
+    margin: auto 0 0;
+    color: var(--headerColor);
+}
