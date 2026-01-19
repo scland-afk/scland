@@ -217,16 +217,8 @@
 }
 /* Large Desktop Parallax Effect - 1300px */
 @media only screen and (min-width: 81.25rem) {
-    #hero-997 {
-        background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/landing.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        /* creates parallax effect on background image */
-        background-attachment: fixed;
-        /* remove img tag so we can make parallax work */
-    }
     #hero-997 .cs-background img {
-        display: none;
+        /* creates parallax effect on background image */
+        position: fixed;
     }
 }
